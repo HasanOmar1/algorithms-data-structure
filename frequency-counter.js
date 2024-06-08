@@ -105,3 +105,50 @@ function validAnagram2(str1, str2) {
 
 // console.log(validAnagram2("aaz", "zza")); //false
 // console.log(validAnagram2("cinema", "iceman")); //true
+
+function sameFrequency(num1, num2) {
+  const freq1 = {};
+  const freq2 = {};
+
+  num1 = num1.toString();
+  num2 = num2.toString();
+
+  for (let num of num1) {
+    freq1[num] = (freq1[num] || 0) + 1;
+  }
+  for (let num of num2) {
+    freq2[num] = (freq2[num] || 0) + 1;
+  }
+
+  for (let key in freq1) {
+    if (!(key in freq2)) {
+      return false;
+    }
+
+    if (freq2[key] !== freq1[key]) {
+      return false;
+    }
+  }
+  return true;
+}
+// console.log(sameFrequency(182, 281)); // true
+// console.log(sameFrequency(34, 14)); // false
+
+function areThereDuplicates(...n) {
+  const counter = {};
+
+  for (let v of n) {
+    counter[v] = (counter[v] || 0) + 1;
+  }
+
+  for (let key in counter) {
+    if (counter[key] > 1) {
+      return true;
+    }
+  }
+  return false;
+}
+
+// console.log(areThereDuplicates(1, 2, 3)); // false
+// console.log(areThereDuplicates(1, 2, 2)); //true
+// console.log(areThereDuplicates(`a`, "b", "c", "a")); //true
