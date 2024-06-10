@@ -105,4 +105,4 @@ function findLongestSubstring(str) {
 
 // console.log(findLongestSubstring("rithmschool")); // 7
 // console.log(findLongestSubstring("bbbbbb")); // 1
-console.log(findLongestSubstring("thecatinthehat")); // 7
+// console.log(findLongestSubstring("thecatinthehat")); // 7
