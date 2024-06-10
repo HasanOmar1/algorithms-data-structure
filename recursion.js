@@ -41,10 +41,9 @@ function collectOddValues(arr) {
   return result;
 }
 
-console.log(collectOddValues([1, 2, 3, 4, 5, 6]));
+// console.log(collectOddValues([1, 2, 3, 4, 5, 6]));
 
 // pure recursion
-
 function pureCollectOddValues(arr) {
   let newArr = [];
 
@@ -57,4 +56,37 @@ function pureCollectOddValues(arr) {
   return newArr;
 }
 
-console.log(pureCollectOddValues([1, 2, 3, 4, 5, 6]));
+// console.log(pureCollectOddValues([1, 2, 3, 4, 5, 6]));
+
+function power(base, exponent) {
+  if (exponent === 0) return 1;
+  return base * power(base, exponent - 1);
+}
+
+// console.log(power(2, 4)); // 16
+
+// product of array means the multiplication of numbers in array
+function productOfArray(arr) {
+  if (arr.length === 0) return 1;
+  return arr[0] * productOfArray(arr.slice(1));
+}
+
+// console.log(productOfArray([1, 2, 3])); // 6
+// console.log(productOfArray([1, 2, 3, 10])); // 60
+
+// Write a function called recursiveRange which accepts a number and adds up all the numbers
+// from 0 to the number passed to the function
+function recursiveRange(num) {
+  if (num === 1) return 1;
+  return num + recursiveRange(num - 1);
+}
+
+// console.log(recursiveRange(6)); //21
+
+function fib(num) {
+  if (num === 1 || num === 2) return 1;
+  return fib(num - 1) + fib(num - 2);
+}
+
+console.log(fib(4)); // 3
+console.log(fib(10)); // 55
