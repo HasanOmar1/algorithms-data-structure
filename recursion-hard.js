@@ -91,27 +91,44 @@ function capitalizeFirst(arr) {
 // Write a recursive function called nestedEvenSum.
 // Return the sum of all even numbers in an object which may contain nested objects.
 function nestedEvenSum(obj) {
+  // let sum = 0;
+
+  // function helper(innerObj) {
+  //   for (let key in innerObj) {
+  //     if (typeof innerObj[key] === "object" && innerObj[key] !== null) {
+  //       helper(innerObj[key]);
+  //     } else if (typeof innerObj[key] === "number" && innerObj[key] % 2 === 0) {
+  //       sum += innerObj[key];
+  //     }
+  //   }
+  // }
+  // helper(obj);
+  // return sum;
+
+  // or
+
   let sum = 0;
   for (let key in obj) {
-    if (obj[key] % 2 !== 0) {
+    if (typeof obj[key] === "object") {
+      sum += nestedEvenSum(obj[key]);
+    } else if (typeof obj[key] === "number" && obj[key] % 2 === 0) {
       sum += obj[key];
     }
   }
   return sum;
 }
 
-let obj1 = {
-  outer: 2,
-  obj: {
-    inner: 2,
-    otherObj: {
-      superInner: 2,
-      notANumber: true,
-      alsoNotANumber: "yup",
-    },
-  },
-};
-console.log(nestedEvenSum(obj1)); // 6
+// let obj1 = {
+//   outer: 2,
+//   obj: {
+//     inner: 2,
+//     otherObj: {
+//       superInner: 2,
+//       notANumber: true,
+//       alsoNotANumber: "yup",
+//     },
+//   },
+// };
 
 // let obj2 = {
 //   a: 2,
@@ -121,4 +138,143 @@ console.log(nestedEvenSum(obj1)); // 6
 //   e: { e: { e: 2 }, ee: "car" },
 // };
 
+// console.log(nestedEvenSum(obj1)); // 6
 // console.log(nestedEvenSum(obj2)); // 10
+
+//  ---------------------------------------------------------------
+
+// Write a recursive function called capitalizeWords.
+// Given an array of words, return a new array containing each word capitalized.
+function capitalizeWords(arr) {
+  if (arr.length === 0) return [];
+  let cap = arr[0].toUpperCase();
+  return [cap, ...capitalizeWords(arr.slice(1))];
+}
+
+// let words = ["i", "am", "learning", "recursion"];
+// console.log(capitalizeWords(words)); // ['I', 'AM', 'LEARNING', 'RECURSION']
+
+//  ---------------------------------------------------------------
+
+// Write a function called stringifyNumbers which takes in an object
+// and finds all of the values which are numbers and converts them to strings.
+// Recursion would be a great way to solve this!
+// The exercise intends for you to create a new object with the numbers converted to strings,
+// and not modify the original. Keep the original object unchanged.
+function stringifyNumbers(obj) {
+  // let newObj = {};
+
+  // function helper(innerObj, targetObj) {
+  //   for (let key in innerObj) {
+  //     if (
+  //       typeof innerObj[key] === "object" &&
+  //       innerObj[key] !== null &&
+  //       !Array.isArray(innerObj[key])
+  //     ) {
+  //       targetObj[key] = {};
+  //       helper(innerObj[key], targetObj[key]);
+  //     } else if (typeof innerObj[key] === "number") {
+  //       targetObj[key] = innerObj[key].toString();
+  //     } else {
+  //       targetObj[key] = innerObj[key];
+  //     }
+  //   }
+  // }
+  // helper(obj, newObj);
+  // return newObj;
+
+  // or
+
+  let newObj = {};
+
+  for (let key in obj) {
+    if (typeof obj[key] === "number") {
+      newObj[key] = obj[key].toString();
+    } else if (typeof obj[key] === "object" && !Array.isArray(obj[key])) {
+      newObj[key] = stringifyNumbers(obj[key]);
+    } else {
+      newObj[key] = obj[key];
+    }
+  }
+
+  return newObj;
+}
+
+// let obj = {
+//   num: 1,
+//   test: [],
+//   data: {
+//     val: 4,
+//     info: {
+//       isRight: true,
+//       random: 66,
+//     },
+//   },
+// };
+
+// console.log(stringifyNumbers(obj));
+
+// {
+//     num: "1",
+//     test: [],
+//     data: {
+//         val: "4",
+//         info: {
+//             isRight: true,
+//             random: "66"
+//         }
+//     }
+// }
+
+// --------------------------------------------------------
+
+// Write a function called collectStrings which accepts an object
+// and returns an array of all the values in the object that have a typeof string
+function collectStrings(obj) {
+  // const arr = [];
+
+  // function helper(obj) {
+  //   for (let key in obj) {
+  //     if (typeof obj[key] === "object" && obj[key] !== null) {
+  //       helper(obj[key]);
+  //     } else if (typeof obj[key] === "string") {
+  //       arr.push(obj[key]);
+  //     }
+  //   }
+  // }
+  // helper(obj);
+  // return arr;
+
+  // or
+
+  // pure recursion version
+  let arr = [];
+
+  for (let key in obj) {
+    if (typeof obj[key] === "string") {
+      arr.push(obj[key]);
+    } else if (typeof obj[key] === "object") {
+      arr = [...arr, ...collectStrings(obj[key])];
+    }
+  }
+
+  return arr;
+}
+
+// const obj = {
+//   stuff: "foo",
+//   data: {
+//     val: {
+//       thing: {
+//         info: "bar",
+//         moreInfo: {
+//           evenMoreInfo: {
+//             weMadeIt: "baz",
+//           },
+//         },
+//       },
+//     },
+//   },
+// };
+
+// console.log(collectStrings(obj)); // ["foo", "bar", "baz"]))
