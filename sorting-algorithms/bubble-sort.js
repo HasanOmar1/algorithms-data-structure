@@ -56,6 +56,6 @@ console.log(optimizedBubbleSort([8, 1, 2, 3, 4, 5])); // [1,2,3,4,5,8]
 
 // Time Complexity
 
-// Worst-case : O(n^2)
 // best-case : O(n)
 // average-case : O(n^2)
+// Worst-case : O(n^2)
