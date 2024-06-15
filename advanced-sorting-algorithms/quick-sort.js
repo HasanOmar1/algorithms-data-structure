@@ -38,6 +38,6 @@ console.log(quickSort([4, 8, 2, 1, 5, 7, 6, 3]));
 
 // Best : O(n log n)
 // Average : O(n log n)
-// Worst : O(n^2)
+// Worst : O(n^2) (if the array is already sorted)
 
 // Space Complexity : O(log n)
