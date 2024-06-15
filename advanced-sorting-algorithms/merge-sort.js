@@ -30,8 +30,6 @@ function merge(arr1, arr2) {
 // console.log(merge([1, 10, 50], [2, 14, 99, 100])); // [1,2,10,14,50,99,100]
 
 // sorts array
-// Time Complexity: O(n log n)
-// Space Complexity: O(n)
 function mergeSort(arr) {
   if (arr.length <= 1) return arr;
 
@@ -43,3 +41,6 @@ function mergeSort(arr) {
 }
 // console.log(mergeSort([1, 10, 50, 2, 14, 99, 100])); // [1,2,10,14,50,99,100]
 // console.log(mergeSort([15, 2, 13, 91, 28, 100, 8])); // [2,8,13,15,28,91,100]
+
+// Time Complexity: O(n log n)
+// Space Complexity: O(n)
