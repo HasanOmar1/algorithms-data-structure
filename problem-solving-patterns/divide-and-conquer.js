@@ -9,7 +9,7 @@ function search(arr, num) {
 }
 // console.log(search([1, 2, 3, 4, 5, 6], 4)); // 3
 
-// Log(N)
+// O(log n)
 function binarySearch(arr, num) {
   let min = 0;
   let max = arr.length - 1;
