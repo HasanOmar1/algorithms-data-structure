@@ -11,19 +11,18 @@ function search(arr, num) {
 
 // O(log n)
 function binarySearch(arr, num) {
-  let min = 0;
-  let max = arr.length - 1;
+  let start = 0;
+  let end = arr.length - 1;
 
-  while (min <= max) {
-    let middle = Math.floor((min + max) / 2);
-    let currentElement = arr[middle];
+  while (start <= end) {
+    let mid = Math.floor((start + end) / 2);
 
-    if (currentElement < num) {
-      min = middle + 1;
-    } else if (currentElement > num) {
-      max = middle - 1;
+    if (arr[mid] < num) {
+      start = mid + 1;
+    } else if (arr[mid] > num) {
+      end = mid - 1;
     } else {
-      return middle;
+      return mid;
     }
   }
   return -1;

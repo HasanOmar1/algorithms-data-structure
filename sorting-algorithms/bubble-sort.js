@@ -36,6 +36,8 @@ function bubbleSort(arr) {
 
 // console.log(bubbleSort([5, 3, 4, 1, 2])); // [1,2,3,4,5]
 
+// -------------------------------------------------------------------------
+
 // if no swap then break out of the loop
 // O(n)
 function optimizedBubbleSort(arr) {
