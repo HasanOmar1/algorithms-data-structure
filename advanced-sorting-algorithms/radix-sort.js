@@ -40,6 +40,7 @@ function mostDigits(arr) {
 // console.log(mostDigits([1234, 56, 7])); // 4
 // console.log(mostDigits([1234, 56, 7, -12345])); // 5
 
+// radix sort
 function radixSort(arr) {
   let maxDigitsCount = mostDigits(arr);
   for (let k = 0; k < maxDigitsCount; k++) {
@@ -57,3 +58,8 @@ function radixSort(arr) {
 }
 
 console.log(radixSort([15, 100, 3, 9, 1234]));
+
+// Time Complexity :  O(nk)
+// Space Complexity:  O(n + k)
+// n = length of array
+// k = number of digits(average)
