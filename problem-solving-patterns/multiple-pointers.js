@@ -33,6 +33,7 @@ function sumZero2(arr) {
 // console.log(sumZero2([1, 2, 3])); // undefined
 
 // O(n)
+// unique values = count of numbers that aren't the same
 function countUniqueValues(arr) {
   if (arr.length === 0) return 0;
 
