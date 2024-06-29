@@ -10,3 +10,4 @@ function stringSearch(str, pattern) {
 }
 
 console.log(stringSearch("lorie loled", "lol")); // 1
+console.log(stringSearch("sadbutsad", "sad")); // 2
