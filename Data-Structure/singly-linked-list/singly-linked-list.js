@@ -79,6 +79,28 @@ class SinglyLinkedList {
 
     return this;
   }
+
+  get(index) {
+    if (index < 0 || index >= this.length) return null;
+    let counter = 0;
+    let current = this.head;
+    while (counter < index) {
+      current = current.next;
+      counter++;
+    }
+    return current;
+  }
+
+  set(index, val) {
+    let foundNode = this.get(index);
+
+    if (foundNode) {
+      foundNode.val = val;
+      return true;
+    }
+
+    return false;
+  }
 }
 
 let list = new SinglyLinkedList();
@@ -113,9 +135,23 @@ list.push("Third");
 
 // -------------------------------------------
 
-// shift [adds new node at first position]
+// unshift [adds new node at first position]
 
 // list.unshift(`Zero`);
+// console.log(list);
+
+// -------------------------------------------
+
+// get [ gets the node]
+
+// console.log(list.get(0));
+// console.log(list.get(1));
+
+// -------------------------------------------
+
+// set [ updates the node]
+
+// console.log(list.set(0, "NEW"));
 // console.log(list);
 
 // -------------------------------------------
