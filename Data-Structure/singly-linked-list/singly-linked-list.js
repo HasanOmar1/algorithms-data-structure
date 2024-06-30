@@ -50,21 +50,43 @@ class SinglyLinkedList {
 
     return current;
   }
-}
 
-// let first = new Node("Hi");
-// first.next = new Node("there");
-// first.next.next = new Node("how");
-// first.next.next.next = new Node("are");
-// first.next.next.next.next = new Node("you");
+  shift() {
+    if (!this.head) return undefined;
+    let oldHead = this.head;
+    this.head = oldHead.next;
+    this.length--;
+
+    if (this.length === 0) {
+      this.tail = null;
+    }
+
+    return oldHead;
+  }
+
+  unshift(val) {
+    let newNode = new Node(val);
+
+    if (!this.head) {
+      this.head = newNode;
+      this.tail = this.head;
+    } else {
+      newNode.next = this.head;
+      this.head = newNode;
+    }
+
+    this.length++;
+
+    return this;
+  }
+}
 
 let list = new SinglyLinkedList();
 
 // push
-list.push(3);
-list.push(5);
-list.push(10);
-// list.push(17);
+list.push("First");
+list.push("Second");
+list.push("Third");
 
 // console.log(list);
 // console.log(list.head);
@@ -75,7 +97,25 @@ list.push(10);
 
 // pop
 
-console.log(list.pop());
-console.log(list.pop());
-console.log(list.pop());
-console.log(list);
+// list.pop();
+// list.pop();
+// list.pop();
+// console.log(list);
+
+// -------------------------------------------
+
+// shift [removes first node]
+
+// list.shift();
+// list.shift();
+// list.shift();
+// console.log(list);
+
+// -------------------------------------------
+
+// shift [adds new node at first position]
+
+// list.unshift(`Zero`);
+// console.log(list);
+
+// -------------------------------------------
