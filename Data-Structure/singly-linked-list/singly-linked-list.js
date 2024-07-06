@@ -15,6 +15,7 @@ class SinglyLinkedList {
     this.length = 0;
   }
   push(val) {
+    // adds node to the end of the list
     let newNode = new Node(val);
 
     if (!this.head) {
@@ -30,6 +31,7 @@ class SinglyLinkedList {
   }
 
   pop() {
+    // removes last node
     if (!this.head) return undefined;
     let current = this.head;
     let newTail = current;
@@ -52,12 +54,14 @@ class SinglyLinkedList {
   }
 
   shift() {
+    // removes first node
     if (!this.head) return undefined;
     let oldHead = this.head;
     this.head = oldHead.next;
     this.length--;
 
     if (this.length === 0) {
+      this.head = null;
       this.tail = null;
     }
 
@@ -65,6 +69,7 @@ class SinglyLinkedList {
   }
 
   unshift(val) {
+    // adds node to the start of the list
     let newNode = new Node(val);
 
     if (!this.head) {
@@ -91,15 +96,47 @@ class SinglyLinkedList {
     return current;
   }
 
-  set(index, val) {
+  set(index, value) {
     let foundNode = this.get(index);
 
     if (foundNode) {
-      foundNode.val = val;
+      foundNode.val = value;
       return true;
     }
 
     return false;
+  }
+
+  insert(index, value) {
+    // adds new node at given index
+    if (index < 0 || index > this.length) return false;
+    if (index === this.length) return !!this.push(value);
+    if (index === 0) return !!this.unshift(value);
+
+    let newNode = new Node(value);
+    let prevNode = this.get(index - 1);
+
+    newNode.next = prevNode.next;
+    prevNode.next = newNode;
+
+    this.length++;
+
+    return true;
+  }
+
+  remove(index) {
+    // removes node at given index
+    if (index < 0 || index >= this.length) return null;
+    if (index === this.length - 1) return this.pop(index);
+    if (index === 0) return this.shift(index);
+
+    let prevNode = this.get(index - 1);
+    let removedNode = prevNode.next;
+
+    prevNode.next = removedNode.next;
+
+    this.length--;
+    return removedNode;
   }
 }
 
@@ -155,3 +192,17 @@ list.push("Third");
 // console.log(list);
 
 // -------------------------------------------
+
+// insert
+
+// console.log(list.insert(1, "One and a half"));
+// console.log(list.get(1));
+// console.log(list);
+
+// -------------------------------------------
+
+// remove
+
+// list.remove(1);
+// console.log(list.get(1));
+// console.log(list);
