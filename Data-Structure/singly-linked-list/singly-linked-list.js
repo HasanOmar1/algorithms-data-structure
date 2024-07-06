@@ -138,14 +138,33 @@ class SinglyLinkedList {
     this.length--;
     return removedNode;
   }
+
+  reverse() {
+    let node = this.head;
+    this.head = this.tail;
+    this.tail = node;
+
+    let prev = null;
+    let next;
+
+    for (let i = 0; i < this.length; i++) {
+      // or while(node !== null)
+      next = node.next;
+      node.next = prev;
+      prev = node;
+      node = next;
+    }
+
+    return this;
+  }
 }
 
 let list = new SinglyLinkedList();
 
 // push
-list.push("First");
-list.push("Second");
-list.push("Third");
+list.push("1");
+list.push("2");
+list.push("3");
 
 // console.log(list);
 // console.log(list.head);
@@ -174,7 +193,7 @@ list.push("Third");
 
 // unshift [adds new node at first position]
 
-// list.unshift(`Zero`);
+// list.unshift(`0`);
 // console.log(list);
 
 // -------------------------------------------
@@ -195,7 +214,7 @@ list.push("Third");
 
 // insert
 
-// console.log(list.insert(1, "One and a half"));
+// console.log(list.insert(1, "1.5"));
 // console.log(list.get(1));
 // console.log(list);
 
@@ -206,3 +225,18 @@ list.push("Third");
 // list.remove(1);
 // console.log(list.get(1));
 // console.log(list);
+
+// -------------------------------------------
+
+// reverse
+
+// console.log(list.reverse());
+
+// -------------------------------------------
+
+// time complexity
+
+// insertion O(1)
+// removal O(1) if we remove the first node or O(n) if we remove the last node
+// searching O(n)
+// access O(n)
